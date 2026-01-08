@@ -1,27 +1,20 @@
-import { Link } from "expo-router";
-import React from "react";
+import React from 'react';
 import {
-  Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
   View
 } from "react-native";
 
-export default function Login() {
+export default function signin() {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
-      <Image
-        source={require("../../assets/images/tem.png")}
-        style={styles.image}
-        resizeMode="cover"
-      />
-
       <View style={styles.card}>
-        <Text style={styles.logo}>Radixsol</Text>
+        <Text style={styles.logo}>Where do you live?</Text>
 
         <View style={styles.welcomeSection}>
           <Text style={styles.welcomeText}>Welcome</Text>
@@ -29,25 +22,18 @@ export default function Login() {
             Get started today with Radixsol
           </Text>
         </View>
-
-        <View style={styles.authActions}>
-          <Link href="/sign-in" style={styles.signIn}>
-            <Text style={styles.signInText}>Sign In</Text>
-          </Link>
-
-          <Link href="/sign-up" style={styles.signOut}>
-            <Text style={styles.signOutText}>Sign Up</Text>
-          </Link>
-        </View>
+        <Pressable style={styles.signIn}>
+          <Text style={styles.signInText}>Continue</Text>
+        </Pressable>
       </View>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#F5F7FA",
+    backgroundColor: "#ffffffff",
   },
 
   image: {
@@ -62,7 +48,7 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#4069E1",
+    color: "#171A1F",
     marginBottom: 20,
   },
 
