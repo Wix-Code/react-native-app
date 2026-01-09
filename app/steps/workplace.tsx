@@ -1,47 +1,44 @@
-import { default as React } from 'react';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import React from "react";
 import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text, TextInput, View
-} from 'react-native';
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 type Props = {
-  onNext: () => void
-}
-export default function Location({onNext}: Props) {
+  onNext: () => void;
+};
+
+export default function WorkPlace({ onNext }: Props) {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
-        <Text style={styles.logo}>Where do you live?</Text>
+        <Text style={styles.logo}>Where do you want to work?</Text>
 
         <View style={styles.welcomeSection}>
-          <Text style={styles.subText}>
-            Home Zip code
-          </Text>
-          <TextInput style={styles.input} />
+          <FontAwesome5 name="search" size={18} color="#4069E1" />
+          <TextInput placeholder='Search for cities or states' style={styles.input} />
         </View>
-        
+
         <Pressable onPress={onNext} style={styles.signIn}>
           <Text style={styles.signInText}>Continue</Text>
         </Pressable>
       </View>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#ffffffff",
-  },
-
-  image: {
-    width: "100%",
-    height: 415,
+    backgroundColor: "#ffffff",
   },
 
   card: {
@@ -57,14 +54,19 @@ const styles = StyleSheet.create({
   },
 
   welcomeSection: {
-    marginBottom: 30,
-  },
-
-  welcomeText: {
-    fontSize: 13,
-    fontWeight: "600",
-    color: "#8D90A1",
-    textTransform: "uppercase",
+    marginBottom: 10,
+    width: "100%",
+    height: 46,
+    boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 10,
+    borderRadius: 16,
+    marginTop: 8,
+    borderWidth: 1,
+    borderColor: "#eeeeeeff",
+    paddingHorizontal: 20,
   },
 
   subText: {
@@ -76,17 +78,23 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_700Bold",
   },
 
-  authActions: {
-    marginTop: 10,
+  input: {
+    width: "100%",
+    fontFamily: "Poppins_400Regular",
+    color: "#D9D9D9",
+    fontSize: 16,
+    outlineWidth: 0
   },
+
+  
 
   signIn: {
     backgroundColor: "#4069E1",
     height: 52,
     borderRadius: 16,
-    display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 20,
   },
 
   signInText: {
@@ -95,32 +103,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontFamily: "Poppins_500Medium",
   },
-
-  signOut: {
-    height: 52,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: "#2A2A37",
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-    marginTop: 20,
-    backgroundColor: "#fff",
-  },
-
-  signOutText: {
-    color: "#2A2A37",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  input: {
-    width: "100%",
-    height: 48,
-    borderRadius: 16,
-    marginTop: 8,
-    borderWidth: 1,
-    borderColor: "#D9D9D9",
-    paddingLeft: 10,
-    paddingRight: 10,
-  }
 });

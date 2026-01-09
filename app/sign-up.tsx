@@ -1,23 +1,16 @@
-import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import {
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  View
+  View,
 } from "react-native";
+import Radio from "./components/radio";
 import { licensed } from "./dummyData";
 
 export default function Signup() {
-  // Track which certs are selected
-  const [selected, setSelected] = useState<string[]>([]);
-
-  const toggleCert = (id: string) => {
-    setSelected(prev =>
-      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-    );
-  };
+  const [selected, setSelected] = useState<string | null>(null);
 
   return (
     <ScrollView
@@ -27,20 +20,22 @@ export default function Signup() {
       <View style={styles.card}>
         <Text style={styles.logo}>Are you licensed?</Text>
 
-        <View>
-          {licensed.map(cert => (
-            <View key={cert.id} style={styles.welcomeSection}>
-              <Checkbox
-                value={selected.includes(cert.id)}
-                onValueChange={() => toggleCert(cert.id)}
-                color={selected.includes(cert.id) ? "#4069E1" : undefined}
-              />
-              <Text style={styles.subText}>{cert.name}</Text>
-            </View>
-          ))}
-        </View>
+        {licensed.map(item => (
+          <Radio
+            key={item.id}
+            label={item.name}
+            selected={selected === item.id}
+            onSelect={() => setSelected(item.id)}
+          />
+        ))}
 
-        <Pressable style={styles.signIn}>
+        <Pressable
+          style={[
+            styles.signIn,
+            { opacity: selected ? 1 : 0.5 },
+          ]}
+          disabled={!selected}
+        >
           <Text style={styles.signInText}>Continue</Text>
         </Pressable>
       </View>
@@ -51,6 +46,7 @@ export default function Signup() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
+    fontFamily: "Poppins_700Bold",
     backgroundColor: "#ffffff",
   },
   card: {
@@ -59,6 +55,7 @@ const styles = StyleSheet.create({
   logo: {
     fontSize: 20,
     fontWeight: "bold",
+    fontFamily: "Poppins_700Bold",
     color: "#171A1F",
     marginBottom: 30,
   },
@@ -85,5 +82,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
+    fontFamily: "Poppins_400Regular",
   },
 });

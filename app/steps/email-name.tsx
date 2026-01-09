@@ -6,7 +6,10 @@ import {
   Text, TextInput, View
 } from 'react-native';
 
-export default function EmailName() {
+type Props = {
+  onNext: () => void
+}
+export default function EmailName({onNext}: Props) {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -29,7 +32,7 @@ export default function EmailName() {
           <TextInput style={styles.input} />
         </View>
 
-        <Pressable style={styles.signIn}>
+        <Pressable onPress={onNext} style={styles.signIn}>
           <Text style={styles.signInText}>Continue</Text>
         </Pressable>
       </View>
@@ -57,6 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#171A1F",
     marginBottom: 20,
+    fontFamily: "Poppins_700Bold",
   },
 
   welcomeSection: {
@@ -80,6 +84,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     marginTop: 6,
+    fontFamily: "Poppins_700Bold",
   },
 
   authActions: {
@@ -99,6 +104,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
+    fontFamily: "Poppins_500Medium",
   },
 
   signOut: {

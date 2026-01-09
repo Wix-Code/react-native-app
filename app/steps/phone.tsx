@@ -1,53 +1,45 @@
-import { Link } from "expo-router";
-import React from "react";
+import { default as React } from 'react';
 import {
-  Image,
+  Pressable,
   ScrollView,
   StyleSheet,
-  Text,
-  View
-} from "react-native";
+  Text, TextInput, View
+} from 'react-native';
 
-export default function Login() {
+type Props = {
+  onNext: () => void
+}
+export default function Phone({onNext}: Props) {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
-      <Image
-        source={require("../../assets/images/tem.png")}
-        style={styles.image}
-        resizeMode="cover"
-      />
-
       <View style={styles.card}>
-        <Text style={styles.logo}>Radixsol</Text>
+        <Text style={styles.logo}>Create an account</Text>
 
         <View style={styles.welcomeSection}>
-          <Text style={styles.welcomeText}>Welcome</Text>
           <Text style={styles.subText}>
-            Get started today with Radixsol
+            We might save and send a verification code to this phone number.
           </Text>
         </View>
 
-        <View style={styles.authActions}>
-          <Link href="/sign-in" style={styles.signIn}>
-            <Text style={styles.signInText}>Sign In</Text>
-          </Link>
-
-          <Link href="/sign-up" style={styles.signOut}>
-            <Text style={styles.signOutText}>Sign Up</Text>
-          </Link>
+        <View style={styles.email}>
+          <TextInput style={styles.input} />
         </View>
+
+        <Pressable onPress={onNext} style={styles.signIn}>
+          <Text style={styles.signInText}>Continue</Text>
+        </Pressable>
       </View>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#F5F7FA",
+    backgroundColor: "#ffffffff",
   },
 
   image: {
@@ -60,14 +52,18 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    fontSize: 28,
+    fontSize: 20,
     fontWeight: "bold",
+    color: "#171A1F",
+    marginBottom: 10,
     fontFamily: "Poppins_700Bold",
-    color: "#4069E1",
-    marginBottom: 20,
   },
 
   welcomeSection: {
+    marginBottom: 10,
+  },
+
+  email: {
     marginBottom: 30,
   },
 
@@ -79,12 +75,11 @@ const styles = StyleSheet.create({
   },
 
   subText: {
-    fontSize: 34,
-    color: "#2A2A37",
-    fontFamily: "Poppins_700Bold",
-    fontWeight: "bold",
+    fontSize: 16,
+    color: "#9095A0",
     letterSpacing: 0.25,
     marginTop: 6,
+    fontFamily: "Poppins_400Regular",
   },
 
   authActions: {
@@ -103,8 +98,8 @@ const styles = StyleSheet.create({
   signInText: {
     color: "#fff",
     fontSize: 16,
-    fontFamily: "Poppins_500Medium",
     fontWeight: "600",
+    fontFamily: "Poppins_500Medium",
   },
 
   signOut: {
@@ -122,7 +117,16 @@ const styles = StyleSheet.create({
   signOutText: {
     color: "#2A2A37",
     fontSize: 16,
-    fontFamily: "Poppins_500Medium",
     fontWeight: "600",
   },
+  input: {
+    width: "100%",
+    height: 48,
+    borderRadius: 16,
+    marginTop: 8,
+    borderWidth: 1,
+    borderColor: "#D9D9D9",
+    paddingLeft: 10,
+    paddingRight: 10,
+  }
 });

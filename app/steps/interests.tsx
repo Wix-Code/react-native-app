@@ -9,8 +9,11 @@ import {
 } from "react-native";
 import { interests } from "../dummyData";
 
+type Props = {
+  onNext: () => void
+}
 
-export default function Interests() {
+export default function Interests({onNext}: Props) {
   // Track which certs are selected
   const [selected, setSelected] = useState<string[]>([]);
 
@@ -41,7 +44,7 @@ export default function Interests() {
           ))}
         </View>
 
-        <Pressable style={styles.signIn}>
+        <Pressable style={styles.signIn} onPress={onNext}>
           <Text style={styles.signInText}>Continue</Text>
         </Pressable>
       </View>
@@ -62,6 +65,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#171A1F",
     marginBottom: 30,
+    fontFamily: "Poppins_700Bold",
   },
   welcomeSection: {
     marginBottom: 20,
@@ -73,6 +77,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#2A2A37",
     fontWeight: "normal",
+    fontFamily: "Poppins_400Regular",
   },
   signIn: {
     backgroundColor: "#4069E1",
@@ -86,5 +91,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
+    fontFamily: "Poppins_500Medium",
   },
 });

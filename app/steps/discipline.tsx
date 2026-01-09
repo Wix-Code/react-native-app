@@ -7,32 +7,38 @@ import {
   View,
 } from "react-native";
 import Radio from "../components/radio";
-import { licensed } from "../dummyData";
+import { healthDisciplines } from "../dummyData";
 
 type Props = {
-  onNext: () => void
-}
+  onNext: () => void;
+};
 
-export default function Licensed({onNext}: Props) {
+export default function Discipline({ onNext }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
+    <View style={styles.container}>
       <View style={styles.card}>
-        <Text style={styles.logo}>Are you licensed?</Text>
+        <Text style={styles.logo}>What's your discipline?</Text>
 
-        {licensed.map(item => (
-          <Radio
-            key={item.id}
-            label={item.name}
-            selected={selected === item.id}
-            onSelect={() => setSelected(item.id)}
-          />
-        ))}
+        {/* ONLY THIS PART SCROLLS */}
+        <ScrollView
+          style={{ flex: 1 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {healthDisciplines.map(item => (
+            <Radio
+              key={item.id}
+              label={item.name}
+              selected={selected === item.id}
+              onSelect={() => setSelected(item.id)}
+            />
+          ))}
+        </ScrollView>
+      </View>
 
+      {/* FIXED BUTTON */}
+      <View style={styles.footer}>
         <Pressable
           style={[
             styles.signIn,
@@ -44,19 +50,27 @@ export default function Licensed({onNext}: Props) {
           <Text style={styles.signInText}>Continue</Text>
         </Pressable>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    fontFamily: "Poppins_700Bold",
+    flex: 1,
     backgroundColor: "#ffffff",
   },
+
+  footer: {
+    padding: 20,
+    backgroundColor: "#ffffffff",
+  },
+
   card: {
+    flex: 1,
     padding: 20,
   },
+
   logo: {
     fontSize: 20,
     fontWeight: "bold",
@@ -64,25 +78,15 @@ const styles = StyleSheet.create({
     color: "#171A1F",
     marginBottom: 30,
   },
-  welcomeSection: {
-    marginBottom: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-  subText: {
-    fontSize: 16,
-    color: "#2A2A37",
-    fontWeight: "normal",
-  },
+
   signIn: {
     backgroundColor: "#4069E1",
     height: 52,
     borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
   },
+
   signInText: {
     color: "#fff",
     fontSize: 16,
