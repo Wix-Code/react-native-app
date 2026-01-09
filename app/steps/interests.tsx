@@ -7,9 +7,10 @@ import {
   Text,
   View
 } from "react-native";
-import { licensed } from "./dummyData";
+import { interests } from "../dummyData";
 
-export default function Signup() {
+
+export default function Interests() {
   // Track which certs are selected
   const [selected, setSelected] = useState<string[]>([]);
 
@@ -25,10 +26,10 @@ export default function Signup() {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
-        <Text style={styles.logo}>Are you licensed?</Text>
+        <Text style={styles.logo}>What are you interested in?</Text>
 
         <View>
-          {licensed.map(cert => (
+          {interests.map(cert => (
             <View key={cert.id} style={styles.welcomeSection}>
               <Checkbox
                 value={selected.includes(cert.id)}
