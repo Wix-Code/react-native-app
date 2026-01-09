@@ -1,3 +1,4 @@
+import { BlurView } from "expo-blur";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -8,6 +9,7 @@ import {
 } from "react-native";
 import Radio from "../components/radio";
 import { healthDisciplines } from "../dummyData";
+
 
 type Props = {
   onNext: () => void;
@@ -38,7 +40,7 @@ export default function Discipline({ onNext }: Props) {
       </View>
 
       {/* FIXED BUTTON */}
-      <View style={styles.footer}>
+      <BlurView intensity={20} tint="light" style={styles.footer}>
         <Pressable
           style={[
             styles.signIn,
@@ -49,7 +51,7 @@ export default function Discipline({ onNext }: Props) {
         >
           <Text style={styles.signInText}>Continue</Text>
         </Pressable>
-      </View>
+      </BlurView>
     </View>
   );
 }
