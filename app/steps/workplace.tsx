@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import React from "react";
 import {
@@ -11,15 +12,21 @@ import {
 
 type Props = {
   onNext: () => void;
+  back: () => void;
 };
 
-export default function WorkPlace({ onNext }: Props) {
+export default function WorkPlace({ back, onNext }: Props) {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
+
+        <View style={styles.arrow}>
+          <Ionicons name="arrow-back-outline" size={20} color="black" />
+        </View>
+
         <Text style={styles.logo}>Where do you want to work?</Text>
 
         <View style={styles.welcomeSection}>
@@ -43,6 +50,10 @@ const styles = StyleSheet.create({
 
   card: {
     padding: 20,
+  },
+
+  arrow: {
+    marginBottom: 20
   },
 
   logo: {

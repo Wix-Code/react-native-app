@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { default as React } from 'react';
 import {
   Pressable,
@@ -8,14 +9,19 @@ import {
 
 type Props = {
   onNext: () => void
+  back: () => void
 }
-export default function Location({onNext}: Props) {
+export default function Location({onNext, back}: Props) {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
+
+        <View style={styles.arrow}>
+          <Ionicons onPress={back} name="arrow-back-outline" size={20} color="black" />
+        </View>
         <Text style={styles.logo}>Where do you live?</Text>
 
         <View style={styles.welcomeSection}>
@@ -42,6 +48,10 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 415,
+  },
+
+  arrow: {
+    marginBottom: 20
   },
 
   card: {

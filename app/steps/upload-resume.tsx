@@ -1,4 +1,5 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import React from "react";
 import {
   Pressable,
@@ -19,6 +20,9 @@ export default function UploadResume({ onNext }: Props) {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
+        <View style={styles.arrow}>
+          <Ionicons name="arrow-back-outline" size={20} color="black" />
+        </View>
         <Text style={styles.logo}>Upload Resume</Text>
 
         <View style={styles.welcomeSection}>
@@ -42,6 +46,10 @@ const styles = StyleSheet.create({
 
   card: {
     padding: 20,
+  },
+
+  arrow: {
+    marginBottom: 20
   },
 
   logo: {

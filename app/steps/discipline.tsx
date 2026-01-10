@@ -1,4 +1,4 @@
-import { BlurView } from "expo-blur";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -13,17 +13,21 @@ import { healthDisciplines } from "../dummyData";
 
 type Props = {
   onNext: () => void;
+  back: () => void;
 };
 
-export default function Discipline({ onNext }: Props) {
+export default function Discipline({ back, onNext }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
     <View style={styles.container}>
       <View style={styles.card}>
+        <View style={styles.arrow}>
+          <Ionicons onPress={back} name="arrow-back-outline" size={20} color="black" />
+        </View>
+
         <Text style={styles.logo}>What's your discipline?</Text>
 
-        {/* ONLY THIS PART SCROLLS */}
         <ScrollView
           style={{ flex: 1 }}
           showsVerticalScrollIndicator={false}
@@ -39,8 +43,7 @@ export default function Discipline({ onNext }: Props) {
         </ScrollView>
       </View>
 
-      {/* FIXED BUTTON */}
-      <BlurView intensity={20} tint="light" style={styles.footer}>
+      <View style={styles.footer}>
         <Pressable
           style={[
             styles.signIn,
@@ -51,7 +54,7 @@ export default function Discipline({ onNext }: Props) {
         >
           <Text style={styles.signInText}>Continue</Text>
         </Pressable>
-      </BlurView>
+      </View>
     </View>
   );
 }
@@ -63,9 +66,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
 
+  arrow: {
+    marginBottom: 20
+  },
+  
   footer: {
-    padding: 20,
-    backgroundColor: "#ffffffff",
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    backgroundColor: "rgba(255, 255, 255, 1)",
+    right: 0,
+    padding: 16,
   },
 
   card: {

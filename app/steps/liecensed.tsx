@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Pressable,
@@ -11,9 +12,10 @@ import { licensed } from "../dummyData";
 
 type Props = {
   onNext: () => void
+  back: () => void
 }
 
-export default function Licensed({onNext}: Props) {
+export default function Licensed({onNext, back}: Props) {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
@@ -22,6 +24,11 @@ export default function Licensed({onNext}: Props) {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
+
+        <View style={styles.arrow}>
+          <Ionicons onPress={back} name="arrow-back-outline" size={20} color="black" />
+        </View>
+        
         <Text style={styles.logo}>Are you licensed?</Text>
 
         {licensed.map(item => (
@@ -57,6 +64,11 @@ const styles = StyleSheet.create({
   card: {
     padding: 20,
   },
+
+  arrow: {
+    marginBottom: 20
+  },
+  
   logo: {
     fontSize: 20,
     fontWeight: "bold",

@@ -20,14 +20,14 @@ export default function RegisterScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
       {step === 1 && <Phone onNext={next} />}
-      {step === 2 && <EmailName onNext={next} />}
-      {step === 3 && <Discipline onNext={next} />}
-      {step === 4 && <Location onNext={next} />}
-      {step === 5 && <Licensed onNext={next} />}
-      {step === 6 && <YouLicensed onNext={next} />}
-      {step === 7 && <Certificates onNext={next} />}
-      {step === 8 && <Interests onNext={next} />}
-      {step === 9 && <WorkPlace onNext={next} />}
+      {step === 2 && <EmailName back={back} onNext={next} />}
+      {step === 3 && <Discipline back={back} onNext={next} />}
+      {step === 4 && <Location back={back} onNext={next} />}
+      {step === 5 && <Licensed back={back} onNext={next} />}
+      {step === 6 && <YouLicensed back={back} onNext={next} />}
+      {step === 7 && <Certificates back={back} onNext={next} />}
+      {step === 8 && <Interests back={back} onNext={next} />}
+      {step === 9 && <WorkPlace back={back} onNext={next} />}
       {step === 10 && <UploadResume onNext={next} />}
     </View>
   );

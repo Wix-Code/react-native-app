@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { default as React } from 'react';
 import {
   Pressable,
@@ -16,6 +17,9 @@ export default function Phone({onNext}: Props) {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
+        <View style={styles.arrow}>
+          <Ionicons name="arrow-back-outline" size={20} color="black" />
+        </View>
         <Text style={styles.logo}>Create an account</Text>
 
         <View style={styles.welcomeSection}>
@@ -42,6 +46,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffffff",
   },
 
+  arrow: {
+    marginBottom: 20
+  },
+  
   image: {
     width: "100%",
     height: 415,

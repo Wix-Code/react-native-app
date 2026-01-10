@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import {
@@ -11,9 +12,10 @@ import { interests } from "../dummyData";
 
 type Props = {
   onNext: () => void
+  back: () => void
 }
 
-export default function Interests({onNext}: Props) {
+export default function Interests({onNext, back}: Props) {
   // Track which certs are selected
   const [selected, setSelected] = useState<string[]>([]);
 
@@ -29,6 +31,10 @@ export default function Interests({onNext}: Props) {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.card}>
+        <View style={styles.arrow}>
+          <Ionicons name="arrow-back-outline" size={20} color="black" />
+        </View>
+        
         <Text style={styles.logo}>What are you interested in?</Text>
 
         <View>
@@ -59,6 +65,9 @@ const styles = StyleSheet.create({
   },
   card: {
     padding: 20,
+  },
+  arrow: {
+    marginBottom: 20
   },
   logo: {
     fontSize: 20,

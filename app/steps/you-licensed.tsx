@@ -1,4 +1,4 @@
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import {
@@ -13,9 +13,10 @@ import { countries } from "../dummyData";
 
 type Props = {
   onNext: () => void;
+  back: () => void;
 };
 
-export default function WhereLicensed({ onNext }: Props) {
+export default function WhereLicensed({ back, onNext }: Props) {
   const [selected, setSelected] = useState<string[]>([]);
   const [query, setQuery] = useState("");
 
@@ -33,6 +34,9 @@ export default function WhereLicensed({ onNext }: Props) {
     <View style={styles.container}>
       {/* HEADER */}
       <View style={styles.header}>
+        <View style={styles.arrow}>
+          <Ionicons name="arrow-back-outline" size={20} color="black" />
+        </View>
         <Text style={styles.title}>Where are you licensed?</Text>
       </View>
 
@@ -134,11 +138,17 @@ const styles = StyleSheet.create({
     color: "#171A1F",
   },
 
+  arrow: {
+    marginBottom: 20
+  },
+
   footer: {
     padding: 16,
-    borderTopWidth: 1,
-    borderTopColor: "#E5E7EB",
-    backgroundColor: "#FFFFFF",
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    backgroundColor: "rgba(255, 255, 255, 1)",
+    right: 0,
   },
 
   button: {
