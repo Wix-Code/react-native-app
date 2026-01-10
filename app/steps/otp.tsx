@@ -4,8 +4,10 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text, TextInput, View
+  Text,
+  View
 } from 'react-native';
+import { OtpInput } from "react-native-otp-entry";
 
 type Props = {
   onNext: () => void
@@ -30,7 +32,7 @@ export default function Otp({onNext, back}: Props) {
         </View>
 
         <View style={styles.email}>
-          <TextInput style={styles.input} />
+          <OtpInput numberOfDigits={6} onTextChange={(text) => console.log(text)} />
         </View>
 
         <View style={styles.welcomeSection}>
@@ -44,7 +46,7 @@ export default function Otp({onNext, back}: Props) {
         </View>
 
         <Pressable onPress={onNext} style={styles.signIn}>
-          <Text style={styles.signInText}>Continue</Text>
+          <Text style={styles.signInText}>Sign up now</Text>
         </Pressable>
       </View>
     </ScrollView>
@@ -91,6 +93,7 @@ const styles = StyleSheet.create({
   },
 
   email: {
+    marginTop: 10,
     marginBottom: 30,
   },
 
@@ -125,7 +128,6 @@ const styles = StyleSheet.create({
   signInText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "600",
     fontFamily: "Poppins_500Medium",
   },
 
