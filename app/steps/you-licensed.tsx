@@ -35,7 +35,7 @@ export default function WhereLicensed({ back, onNext }: Props) {
       {/* HEADER */}
       <View style={styles.header}>
         <View style={styles.arrow}>
-          <Ionicons name="arrow-back-outline" size={20} color="black" />
+          <Ionicons onPress={back} name="arrow-back-outline" size={20} color="black" />
         </View>
         <Text style={styles.title}>Where are you licensed?</Text>
       </View>

@@ -11,9 +11,10 @@ import {
 
 type Props = {
   onNext: () => void;
+  back: () => void;
 };
 
-export default function UploadResume({ onNext }: Props) {
+export default function UploadResume({ back, onNext }: Props) {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -21,7 +22,7 @@ export default function UploadResume({ onNext }: Props) {
     >
       <View style={styles.card}>
         <View style={styles.arrow}>
-          <Ionicons name="arrow-back-outline" size={20} color="black" />
+          <Ionicons onPress={back} name="arrow-back-outline" size={20} color="black" />
         </View>
         <Text style={styles.logo}>Upload Resume</Text>
 

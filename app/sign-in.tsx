@@ -6,6 +6,7 @@ import EmailName from "./steps/email-name";
 import Interests from "./steps/interests";
 import Licensed from "./steps/liecensed";
 import Location from "./steps/location";
+import Otp from "./steps/otp";
 import Phone from "./steps/phone";
 import UploadResume from "./steps/upload-resume";
 import WorkPlace from "./steps/workplace";
@@ -28,7 +29,8 @@ export default function RegisterScreen() {
       {step === 7 && <Certificates back={back} onNext={next} />}
       {step === 8 && <Interests back={back} onNext={next} />}
       {step === 9 && <WorkPlace back={back} onNext={next} />}
-      {step === 10 && <UploadResume onNext={next} />}
+      {step === 10 && <UploadResume back={back} onNext={next} />}
+      {step === 11 && <Otp back={back} onNext={next} />}
     </View>
   );
 }

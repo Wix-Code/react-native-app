@@ -32,7 +32,7 @@ export default function Interests({onNext, back}: Props) {
     >
       <View style={styles.card}>
         <View style={styles.arrow}>
-          <Ionicons name="arrow-back-outline" size={20} color="black" />
+          <Ionicons onPress={back} name="arrow-back-outline" size={20} color="black" />
         </View>
         
         <Text style={styles.logo}>What are you interested in?</Text>
